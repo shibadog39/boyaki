@@ -36,3 +36,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+# Serverless directories
+.serverless
+.serverless_nextjs
