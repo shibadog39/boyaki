@@ -1,2 +1,2 @@
-boyakiNextStaging:
+boyakiNextProduction:
   component: "@sls-next/serverless-component"

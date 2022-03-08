@@ -1,4 +1,4 @@
-name: frontend deploy
+name: frontend deploy production
 
 on:
   push:
@@ -18,14 +18,35 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install -g yarn
-    - name: yarn install
+
+    - name: Setup yarn
+      run: npm install -g yarn
+
+    - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+    
+    - name: Configure serverless.yml
+      run: cp serverless-production.yml serverless.yml
+
+    - name: Download `.serverless` state from S3
+      run: aws s3 sync s3://boyaki-serverless-state-bucket/production/.serverless .serverless --delete
+
+    - name: Build and Deploy
       run: |
         yarn
         yarn build
         yarn deploy
+    
+    - name: Upload `.serverless` state to S3
+        run: aws s3 sync .serverless s3://boyaki-serverless-state-bucket/production/.serverless --delete
