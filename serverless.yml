@@ -1,2 +1,5 @@
 boyakiNext:
   component: "@sls-next/serverless-component"
+  inputs:
+    cloudfront:
+      distributionId: E1HYB7UXPH44BE
