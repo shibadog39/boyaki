@@ -1,8 +1,10 @@
-name: frontend deploy staging
+name: fe staging
 
 on:
   push:
     branches: [ staging ]
+    paths:
+      - 'frontend/**'
 
 env:
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -37,16 +39,20 @@ jobs:
         aws-region: ap-northeast-1
     
     - name: Configure serverless.yml
+      working-directory: frontend
       run: cp serverless-staging.yml serverless.yml
 
     - name: Download `.serverless` state from S3
+      working-directory: frontend
       run: aws s3 sync s3://boyaki-serverless-state-bucket/staging/.serverless .serverless --delete
 
     - name: Build and Deploy
+      working-directory: frontend
       run: |
         yarn
         yarn build
         yarn deploy
     
     - name: Upload `.serverless` state to S3
+      working-directory: frontend
       run: aws s3 sync .serverless s3://boyaki-serverless-state-bucket/staging/.serverless --delete
