@@ -1,20 +1,17 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+# About
+- twitter likeなソーシャルメディアアプリケーション  
+- [AMPLIFY SNS WORKSHOP](https://amplify-sns.workshop.aws/ja/)でamplifyを用いて構築しているものを、serverless frameworkで構築
+- serverlessの技術を用いたアプリケーション構築の素振りとして
 
-```bash
-npm run dev
-# or
-yarn dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+# Architectue
+<img src="https://user-images.githubusercontent.com/26875412/157812343-9d465204-3c59-4066-b170-ed236a35ef53.jpg" width="60%" />
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
+# Links
+- [AppSync developer guide](https://docs.aws.amazon.com/appsync/latest/devguide/what-is-appsync.html)
+- [Effective AppSync 〜 Serverless Framework を使用した AppSync の実践的な開発方法とテスト戦略 〜](https://qiita.com/G-awa/items/095faa9a94da09bc3ed5#appsync-%E3%81%AE%E5%9F%BA%E6%9C%AC)
+- [serverless framework](https://www.serverless.com/)
+- [Serverless Next.js Component](https://github.com/serverless-nextjs/serverless-next.js/)
+- [serverless-appsync-plugin](https://github.com/sid88in/serverless-appsync-plugin)
