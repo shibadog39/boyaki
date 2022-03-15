@@ -25,7 +25,7 @@ function Posts() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  return data.listPost.map(({ postId, title, content }) => (
+  return data.listPost.map(({ postId, title, content }: any) => (
     <div key={postId} className={styles.card}>
       <h2>{title}</h2>
       <p>{content}</p>
