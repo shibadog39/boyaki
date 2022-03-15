@@ -116,6 +116,8 @@ const serverlessConfiguration: AWS = {
           type: "Query",
           field: "sample",
           dataSource: "sample",
+          request: false,
+          response: false,
         },
       ],
       schema: [
