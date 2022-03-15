@@ -1,7 +1,6 @@
 # About
-- twitter likeなソーシャルメディアアプリケーション  
-- でamplifyを用いて構築しているものを、serverless frameworkで構築
-- serverlessの技術を用いたアプリケーション構築の素振りとして
+- Twitter likeなソーシャルメディアアプリケーション  
+- Serverless Frameworkを用いたアプリケーション構築の素振りとして
 
 # Architectue
 <img src="https://user-images.githubusercontent.com/26875412/157812343-9d465204-3c59-4066-b170-ed236a35ef53.jpg" width="60%" />
