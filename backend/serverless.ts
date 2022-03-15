@@ -33,85 +33,85 @@ const serverlessConfiguration: AWS = {
         awsRegion: "ap-northeast-1",
         defaultAction: "ALLOW",
         userPoolId: { Ref: "BoyakiUserPool" },
-        },
+      },
       region: "ap-northeast-1",
       mappingTemplatesLocation: "resolvers",
       mappingTemplates: [
         {
           type: "User",
           field: "posts",
-          dataSource: "posts_${opt:stage, self:provider.stage}"
+          dataSource: "posts_${opt:stage, self:provider.stage}",
         },
         {
           type: "Query",
           field: "listUser",
-          dataSource: "users_${opt:stage, self:provider.stage}"
+          dataSource: "users_${opt:stage, self:provider.stage}",
         },
         {
           type: "Query",
           field: "getUser",
-          dataSource: "users_${opt:stage, self:provider.stage}"
+          dataSource: "users_${opt:stage, self:provider.stage}",
         },
         {
           type: "Mutation",
           field: "createUser",
-          dataSource: "users_${opt:stage, self:provider.stage}"
-          },
+          dataSource: "users_${opt:stage, self:provider.stage}",
+        },
         {
           type: "Post",
           field: "user",
-          dataSource: "users_${opt:stage, self:provider.stage}"
+          dataSource: "users_${opt:stage, self:provider.stage}",
         },
         {
           type: "Post",
           field: "likes",
-          dataSource: "likes_${opt:stage, self:provider.stage}"
+          dataSource: "likes_${opt:stage, self:provider.stage}",
         },
         {
           type: "Post",
           field: "likes",
-          dataSource: "likes_${opt:stage, self:provider.stage}"
+          dataSource: "likes_${opt:stage, self:provider.stage}",
         },
         {
           type: "Query",
           field: "listPost",
-          dataSource: "posts_${opt:stage, self:provider.stage}"
+          dataSource: "posts_${opt:stage, self:provider.stage}",
         },
         {
           type: "Query",
           field: "listPostByUser",
-          dataSource: "posts_${opt:stage, self:provider.stage}"
+          dataSource: "posts_${opt:stage, self:provider.stage}",
         },
         {
           type: "Query",
           field: "getPost",
-          dataSource: "posts_${opt:stage, self:provider.stage}"
+          dataSource: "posts_${opt:stage, self:provider.stage}",
         },
         {
           type: "Mutation",
           field: "createPost",
-          dataSource: "posts_${opt:stage, self:provider.stage}"
+          dataSource: "posts_${opt:stage, self:provider.stage}",
         },
         {
           type: "Query",
           field: "listLike",
-          dataSource: "likes_${opt:stage, self:provider.stage}"
+          dataSource: "likes_${opt:stage, self:provider.stage}",
         },
         {
           type: "Mutation",
           field: "likePost",
-          dataSource: "likes_${opt:stage, self:provider.stage}"
+          dataSource: "likes_${opt:stage, self:provider.stage}",
         },
         {
           type: "Mutation",
           field: "cancelLikePost",
-          dataSource: "likes_${opt:stage, self:provider.stage}"
+          dataSource: "likes_${opt:stage, self:provider.stage}",
         },
       ],
       schema: [
         "schema/user.graphql",
         "schema/post.graphql",
-        "schema/like.graphql"
+        "schema/like.graphql",
       ],
       dataSources: [
         {
@@ -123,14 +123,14 @@ const serverlessConfiguration: AWS = {
             iamRoleStatements: [
               {
                 Effect: "Allow",
-                Action: [ "dynamodb:*" ],
+                Action: ["dynamodb:*"],
                 Resource: [
                   "arn:aws:dynamodb:${self:provider.region}:*:table/users_${opt:stage, self:provider.stage}",
-                  "arn:aws:dynamodb:${self:provider.region}:*:table/users_${opt:stage, self:provider.stage}/*"
-                ]
-              }
-            ]
-          }
+                  "arn:aws:dynamodb:${self:provider.region}:*:table/users_${opt:stage, self:provider.stage}/*",
+                ],
+              },
+            ],
+          },
         },
         {
           type: "AMAZON_DYNAMODB",
@@ -141,14 +141,14 @@ const serverlessConfiguration: AWS = {
             iamRoleStatements: [
               {
                 Effect: "Allow",
-                Action: [ "dynamodb:*" ],
+                Action: ["dynamodb:*"],
                 Resource: [
                   "arn:aws:dynamodb:${self:provider.region}:*:table/posts_${opt:stage, self:provider.stage}",
-                  "arn:aws:dynamodb:${self:provider.region}:*:table/posts_${opt:stage, self:provider.stage}/*"
-                ]
-              }
-            ]
-          }
+                  "arn:aws:dynamodb:${self:provider.region}:*:table/posts_${opt:stage, self:provider.stage}/*",
+                ],
+              },
+            ],
+          },
         },
         {
           type: "AMAZON_DYNAMODB",
@@ -159,17 +159,17 @@ const serverlessConfiguration: AWS = {
             iamRoleStatements: [
               {
                 Effect: "Allow",
-                Action: [ "dynamodb:*" ],
+                Action: ["dynamodb:*"],
                 Resource: [
                   "arn:aws:dynamodb:${self:provider.region}:*:table/likes_${opt:stage, self:provider.stage}",
-                  "arn:aws:dynamodb:${self:provider.region}:*:table/likes_${opt:stage, self:provider.stage}/*"
-                ]
-              }
-            ]
-          }
-        }
-      ]
-    }
+                  "arn:aws:dynamodb:${self:provider.region}:*:table/likes_${opt:stage, self:provider.stage}/*",
+                ],
+              },
+            ],
+          },
+        },
+      ],
+    },
   },
   resources: {
     Resources: {
@@ -180,20 +180,21 @@ const serverlessConfiguration: AWS = {
           UserPoolName: "BoyakiUserPool_${opt:stage, self:provider.stage}",
           AutoVerifiedAttributes: ["email"],
           Policies: {
-            PasswordPolicy:
-              { MinimumLength: 8 }
+            PasswordPolicy: { MinimumLength: 8 },
           },
-          UsernameAttributes: ["email"]
-        }
+          UsernameAttributes: ["email"],
+          RecoveryMechanisms: [{ Name: "verified_email", Priority: 2 }],
+        },
       },
       BoyakiUserPoolWebClient: {
         Type: "AWS::Cognito::UserPoolClient",
         Properties: {
-          ClientName: "BoyakiUserPoolWebClient_${opt:stage, self:provider.stage}",
+          ClientName:
+            "BoyakiUserPoolWebClient_${opt:stage, self:provider.stage}",
           GenerateSecret: false,
           RefreshTokenValidity: 30,
-          UserPoolId: { Ref: "BoyakiUserPool" }
-        }
+          UserPoolId: { Ref: "BoyakiUserPool" },
+        },
       },
       UserTable: {
         Type: "AWS::DynamoDB::Table",
@@ -202,17 +203,17 @@ const serverlessConfiguration: AWS = {
           KeySchema: [
             {
               AttributeName: "userId",
-              KeyType: "HASH"
-            }
+              KeyType: "HASH",
+            },
           ],
           AttributeDefinitions: [
             {
               AttributeName: "userId",
-              AttributeType: "S"
-            }
+              AttributeType: "S",
+            },
           ],
-          BillingMode: "PAY_PER_REQUEST"
-        }
+          BillingMode: "PAY_PER_REQUEST",
+        },
       },
       PostTable: {
         Type: "AWS::DynamoDB::Table",
@@ -221,18 +222,18 @@ const serverlessConfiguration: AWS = {
           KeySchema: [
             {
               AttributeName: "postId",
-              KeyType: "HASH"
-            }
+              KeyType: "HASH",
+            },
           ],
           AttributeDefinitions: [
             {
               AttributeName: "postId",
-              AttributeType: "S"
+              AttributeType: "S",
             },
             {
               AttributeName: "userId",
-              AttributeType: "S"
-            }
+              AttributeType: "S",
+            },
           ],
           BillingMode: "PAY_PER_REQUEST",
           GlobalSecondaryIndexes: [
@@ -241,17 +242,17 @@ const serverlessConfiguration: AWS = {
               KeySchema: [
                 {
                   AttributeName: "userId",
-                  KeyType: "HASH"
+                  KeyType: "HASH",
                 },
                 {
                   AttributeName: "postId",
-                  KeyType: "RANGE"
-                }
+                  KeyType: "RANGE",
+                },
               ],
-              Projection: { ProjectionType: "ALL" }
-            }
-          ]
-        }
+              Projection: { ProjectionType: "ALL" },
+            },
+          ],
+        },
       },
       LikeTable: {
         Type: "AWS::DynamoDB::Table",
@@ -260,22 +261,22 @@ const serverlessConfiguration: AWS = {
           KeySchema: [
             {
               AttributeName: "likeId",
-              KeyType: "HASH"
-            }
+              KeyType: "HASH",
+            },
           ],
           AttributeDefinitions: [
             {
               AttributeName: "likeId",
-              AttributeType: "S"
+              AttributeType: "S",
             },
             {
               AttributeName: "postId",
-              AttributeType: "S"
+              AttributeType: "S",
             },
             {
               AttributeName: "userId",
-              AttributeType: "S"
-            }
+              AttributeType: "S",
+            },
           ],
           BillingMode: "PAY_PER_REQUEST",
           GlobalSecondaryIndexes: [
@@ -284,34 +285,34 @@ const serverlessConfiguration: AWS = {
               KeySchema: [
                 {
                   AttributeName: "userId",
-                  KeyType: "HASH"
+                  KeyType: "HASH",
                 },
                 {
                   AttributeName: "likeId",
-                  KeyType: "RANGE"
-                }
+                  KeyType: "RANGE",
+                },
               ],
-              Projection: { ProjectionType: "ALL" }
+              Projection: { ProjectionType: "ALL" },
             },
             {
               IndexName: "postId-index",
               KeySchema: [
                 {
                   AttributeName: "postId",
-                  KeyType: "HASH"
+                  KeyType: "HASH",
                 },
                 {
                   AttributeName: "likeId",
-                  KeyType: "RANGE"
-                }
+                  KeyType: "RANGE",
+                },
               ],
-              Projection: { ProjectionType: "ALL" }
+              Projection: { ProjectionType: "ALL" },
             },
-          ]
-        }
+          ],
+        },
       },
-    }
-  }
+    },
+  },
 };
 
 module.exports = serverlessConfiguration;
