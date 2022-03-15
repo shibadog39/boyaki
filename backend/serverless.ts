@@ -183,7 +183,9 @@ const serverlessConfiguration: AWS = {
             PasswordPolicy: { MinimumLength: 8 },
           },
           UsernameAttributes: ["email"],
-          RecoveryMechanisms: [{ Name: "verified_email", Priority: 2 }],
+          AccountRecoverySetting: {
+            RecoveryMechanisms: [{ Name: "verified_email", Priority: 2 }],
+          },
         },
       },
       BoyakiUserPoolWebClient: {
