@@ -14,6 +14,11 @@ const serverlessConfiguration: AWS = {
       NODE_OPTIONS: "--enable-source-maps --stack-trace-limit=1000",
     },
   },
+  functions: {
+    sample: {
+      handler: "functions/handler.sample",
+    },
+  },
   package: { individually: true },
   custom: {
     esbuild: {
@@ -107,11 +112,17 @@ const serverlessConfiguration: AWS = {
           field: "cancelLikePost",
           dataSource: "likes_${opt:stage, self:provider.stage}",
         },
+        {
+          type: "Query",
+          field: "sample",
+          dataSource: "sample",
+        },
       ],
       schema: [
         "schema/user.graphql",
         "schema/post.graphql",
         "schema/like.graphql",
+        "schema/lambda.graphql",
       ],
       dataSources: [
         {
@@ -166,6 +177,13 @@ const serverlessConfiguration: AWS = {
                 ],
               },
             ],
+          },
+        },
+        {
+          type: "AWS_LAMBDA",
+          name: "sample",
+          config: {
+            functionName: "sample",
           },
         },
       ],
