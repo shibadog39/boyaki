@@ -3,8 +3,10 @@
 - Serverless Frameworkを用いたアプリケーション構築の素振りとして
 
 # Architectue
-<img src="https://user-images.githubusercontent.com/26875412/158372409-dbd2d885-6ea8-4385-8142-3c7f292ef63c.jpg" width="60%" />
-
+<div align="center">
+<img src="https://user-images.githubusercontent.com/26875412/158494588-2f7b69f2-47a7-438c-8899-fe131e3ab160.jpg" width="60%" />
+</div>
+  
 # Links
 - [AppSync developer guide](https://docs.aws.amazon.com/appsync/latest/devguide/what-is-appsync.html)
 - [serverless framework](https://www.serverless.com/)
