@@ -1,6 +1,6 @@
 # About
 - Twitter likeなソーシャルメディアアプリケーション  
-- Serverless Frameworkを用いたアプリケーション構築の素振りとして
+- Serverless Frameworkを用いたアプリケーション構築の素振りとして、[AMPLIFY SNS WORKSHOP](https://amplify-sns.workshop.aws/ja/)をamplifyを使わずに実装してみた
 
 # Architectue
 <div align="center">
