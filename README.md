@@ -1,10 +1,12 @@
 # About
 - Twitter likeなソーシャルメディアアプリケーション  
-- Serverless Frameworkを用いたアプリケーション構築の素振りとして
+- Serverless Frameworkを用いたアプリケーション構築の素振りとして、[AMPLIFY SNS WORKSHOP](https://amplify-sns.workshop.aws/ja/)をamplifyを使わずに実装してみた
 
 # Architectue
-<img src="https://user-images.githubusercontent.com/26875412/157812343-9d465204-3c59-4066-b170-ed236a35ef53.jpg" width="60%" />
-
+<div align="center">
+<img src="https://user-images.githubusercontent.com/26875412/158494588-2f7b69f2-47a7-438c-8899-fe131e3ab160.jpg" width="60%" />
+</div>
+  
 # Links
 - [AppSync developer guide](https://docs.aws.amazon.com/appsync/latest/devguide/what-is-appsync.html)
 - [serverless framework](https://www.serverless.com/)
